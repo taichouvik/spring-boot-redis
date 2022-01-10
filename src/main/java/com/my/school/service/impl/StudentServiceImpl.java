@@ -24,8 +24,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student deleteStudentById(int id) {
-        // studentRepo.deleteById(id);
-        // return new Student();
         List<Student> studentList = studentRepo.deleteStudentById(id);
         if (studentList.isEmpty())
             throw new StudentNotFoundException(String.valueOf(id));
@@ -56,6 +54,7 @@ public class StudentServiceImpl implements StudentService {
         newStudent.setName(student.getName());
         newStudent.setSection(student.getSection());
         newStudent.setStandard(student.getStandard());
+        newStudent.setAddress(student.getAddress());
         return studentRepo.save(newStudent);
     }
 

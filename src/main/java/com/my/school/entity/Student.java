@@ -11,6 +11,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Student {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -23,4 +24,10 @@ public class Student {
 
     @NotNull
     private char section;
+
+    private String email;
+
+    private String mob;
+
+    private Address address;
 }
