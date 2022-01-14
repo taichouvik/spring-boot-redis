@@ -6,27 +6,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import com.my.school.validation.ValidStudent;
+
 import lombok.Data;
 
 @Entity
 @Data
+@ValidStudent
 public class Student {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
     private String name;
 
-    @NotNull
     private int standard;
 
-    @NotNull
     private char section;
 
     private String email;
 
+    @NotNull
     private String mob;
 
     private Address address;
