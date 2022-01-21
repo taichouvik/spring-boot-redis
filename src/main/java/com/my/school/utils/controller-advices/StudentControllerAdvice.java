@@ -1,4 +1,4 @@
-package com.my.school.exception;
+package com.my.school.exceptions;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -6,19 +6,26 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.print.attribute.standard.Media;
+import javax.validation.ConstraintViolationException;
+
+import com.my.school.entities.Response;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class CRUDExceptionHandler {
+public class StudentControllerAdvice {
 
-    @ExceptionHandler(value = { RecordNotFoundException.class })
-    public ResponseEntity<Response> recordNotFoundHandler(RecordNotFoundException exception) {
+    @ExceptionHandler(value = { NotFoundException.class })
+    public ResponseEntity<Response> recordNotFoundHandler(NotFoundException exception) {
         HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
         Response response = new Response(Arrays.asList(exception.getMessage()));
         ResponseEntity<Response> responseEntity = new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
         return responseEntity;
@@ -27,9 +34,11 @@ public class CRUDExceptionHandler {
     @ExceptionHandler(value = { MethodArgumentNotValidException.class })
     public ResponseEntity<Response> recordNotFoundHandler(MethodArgumentNotValidException exception) {
         HttpHeaders headers = new HttpHeaders();
-        Response response = new Response(exception.getFieldErrors().stream().map(fieldError -> fieldError.toString()).collect(Collectors.toList()));
-        ResponseEntity<Response> responseEntity = new ResponseEntity<>(response, headers,
-                HttpStatus.BAD_REQUEST);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        Response response = new Response(exception.getFieldErrors().stream()
+                .map(err -> String.format("'%s' - %s", err.getRejectedValue(), err.getDefaultMessage()))
+                .collect(Collectors.toList()));
+        ResponseEntity<Response> responseEntity = new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
         return responseEntity;
     }
 }

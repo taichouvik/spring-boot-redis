@@ -1,4 +1,4 @@
-package com.my.school.validation;
+package com.my.school.validations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -10,12 +10,12 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Constraint(validatedBy = StudentValidator.class)
+@Target(ElementType.FIELD)
+@Constraint(validatedBy = PinValidator.class)
 @Documented
-public @interface ValidStudent {
+public @interface ValidPin {
 
-    String message() default "student not valid";
+    String message() default "{ADDR_ERR.BAD_PIN}";
 
     Class<?>[] groups() default {};
 
