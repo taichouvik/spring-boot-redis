@@ -2,10 +2,7 @@ package com.my.school.utils.errors;
 
 import java.util.Locale;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.WebProperties.LocaleResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 

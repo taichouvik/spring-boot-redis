@@ -3,7 +3,6 @@ package com.my.school.entities;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.my.school.utils.annotations.ValidPin;
 
