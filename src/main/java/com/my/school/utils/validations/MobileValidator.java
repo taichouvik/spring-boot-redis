@@ -1,9 +1,11 @@
-package com.my.school.validations;
+package com.my.school.utils.validations;
 
 import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.my.school.utils.annotations.ValidMobile;
 
 import lombok.extern.slf4j.Slf4j;
 

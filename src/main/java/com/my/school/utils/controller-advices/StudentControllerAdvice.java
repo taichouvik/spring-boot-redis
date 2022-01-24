@@ -10,6 +10,7 @@ import javax.print.attribute.standard.Media;
 import javax.validation.ConstraintViolationException;
 
 import com.my.school.entities.Response;
+import com.my.school.utils.exceptions.NotFoundException;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

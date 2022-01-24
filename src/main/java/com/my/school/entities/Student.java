@@ -10,7 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.my.school.validations.ValidMobile;
+import com.my.school.utils.annotations.ValidMobile;
+
 import lombok.Data;
 
 @Entity

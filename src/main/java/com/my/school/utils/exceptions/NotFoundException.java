@@ -1,4 +1,4 @@
-package com.my.school.exceptions;
+package com.my.school.utils.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

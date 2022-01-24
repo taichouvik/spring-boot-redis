@@ -3,12 +3,11 @@ package com.my.school.services.impl;
 import java.util.List;
 
 import com.my.school.entities.Student;
-import com.my.school.exceptions.NotFoundException;
-import com.my.school.repos.StudentRepo;
+import com.my.school.repositories.StudentRepo;
 import com.my.school.services.StudentService;
+import com.my.school.utils.exceptions.NotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,6 +1,4 @@
-package com.my.school.repos;
-
-import java.util.List;
+package com.my.school.repositories;
 
 import com.my.school.entities.Student;
 
