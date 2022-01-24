@@ -49,7 +49,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getStudents() {
         List<Student> studentList = studentRepo.findAll();
         if (studentList.isEmpty())
-            throw new NotFoundException(Err.STUD_NOT_FOUND/*  */);
+            throw new NotFoundException(Err.STUD_NOT_FOUND);
         else
             return studentList;
     }
