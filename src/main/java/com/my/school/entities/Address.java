@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.my.school.utils.annotations.ValidPin;
+import com.my.school.utils.errors.Err;
 
 import lombok.Data;
 
@@ -12,21 +13,21 @@ import lombok.Data;
 @Data
 public class Address {
 
-    @NotBlank(message = "{addr.err.no.addrl1}")
+    @NotBlank(message = Err.ADDR_NO_L1)
     private String addrLine1;
 
     private String addrLine2;
 
-    @NotBlank(message = "{addr.err.no.city}")
+    @NotBlank(message = Err.ADDR_NO_CITY)
     private String city;
 
-    @NotNull(message = "{addr.err.no.pin}")
+    @NotNull(message = Err.ADDR_NO_PIN)
     @ValidPin
     private String pin;
 
-    @NotBlank(message = "{addr.err.no.state}")
+    @NotBlank(message = Err.ADDR_NO_STATE)
     private String state;
 
-    @NotBlank(message = "{addr.err.no.country}")
+    @NotBlank(message = Err.ADDR_NO_COUNTRY)
     private String country;
 }

@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.my.school.utils.annotations.ValidMobile;
+import com.my.school.utils.errors.Err;
 
 import lombok.Data;
 
@@ -19,21 +20,21 @@ import lombok.Data;
 public class Student {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int sid;
 
-    @NotBlank(message = "{STUD_ERR.NO_NAME}")
+    @NotBlank(message = Err.STUD_NO_NAME )
     @Size(max = 100)
     private String name;
 
     @Id
-    @NotBlank(message = "{STUD_ERR.NO_EMAIL_ID}")
-    @Email(message = "{STUD_ERR.BAD_EMAIL_ID}")
+    @NotBlank(message = Err.STUD_NO_EMAILID)
+    @Email(message = Err.STUD_BAD_EMAILID)
     private String email;
 
     @ValidMobile
     private String mob;
 
-    @NotNull(message = "{STUD_ERR.NO_ADDR}")
+    @NotNull(message = Err.STUD_NO_ADDR)
     @Valid
     private Address address;
 }

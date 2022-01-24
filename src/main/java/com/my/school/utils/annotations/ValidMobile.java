@@ -9,6 +9,7 @@ import java.lang.annotation.ElementType;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import com.my.school.utils.errors.Err;
 import com.my.school.utils.validations.MobileValidator;
 
 @Retention(RetentionPolicy.RUNTIME)
@@ -17,7 +18,7 @@ import com.my.school.utils.validations.MobileValidator;
 @Documented
 public @interface ValidMobile {
 
-    String message() default "{stud.err.bad.mob}";
+    String message() default Err.STUD_BAD_MOB;
 
     Class<?>[] groups() default {};
 

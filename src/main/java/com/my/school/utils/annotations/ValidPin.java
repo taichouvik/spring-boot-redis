@@ -9,6 +9,7 @@ import java.lang.annotation.ElementType;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import com.my.school.utils.errors.Err;
 import com.my.school.utils.validations.PinValidator;
 
 @Retention(RetentionPolicy.RUNTIME)
@@ -17,7 +18,7 @@ import com.my.school.utils.validations.PinValidator;
 @Documented
 public @interface ValidPin {
 
-    String message() default "{stud.err.bad.pin}";
+    String message() default Err.ADDR_BAD_PIN;
 
     Class<?>[] groups() default {};
 

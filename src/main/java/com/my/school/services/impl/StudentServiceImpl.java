@@ -5,6 +5,7 @@ import java.util.List;
 import com.my.school.entities.Student;
 import com.my.school.repositories.StudentRepo;
 import com.my.school.services.StudentService;
+import com.my.school.utils.errors.Err;
 import com.my.school.utils.exceptions.NotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getStudentById(int id) {
-        Student student = studentRepo.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.valueOf(id) + "{STUD_ERR.NOT_FOUND}"));
+        Student student = studentRepo.findBySid(id)
+                .orElseThrow(() -> new NotFoundException(String.valueOf(id), Err.STUD_NOT_FOUND));
         return student;
     }
 
@@ -36,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student updateStudent(Student student) {
-        Student newStudent = getStudentById(student.getId()); 
+        Student newStudent = getStudentById(student.getSid());
         newStudent.setName(student.getName());
         newStudent.setEmail(student.getEmail());
         newStudent.setMob(student.getMob());
@@ -48,7 +49,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getStudents() {
         List<Student> studentList = studentRepo.findAll();
         if (studentList.isEmpty())
-            throw new NotFoundException("{STUD_ERR.NOT_FOUND}");
+            throw new NotFoundException(Err.STUD_NOT_FOUND/*  */);
         else
             return studentList;
     }
