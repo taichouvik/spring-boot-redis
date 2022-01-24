@@ -38,6 +38,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student updateStudent(Student student) {
         Student newStudent = getStudentById(student.getSid());
+        newStudent.setSid(student.getSid());
         newStudent.setName(student.getName());
         newStudent.setEmail(student.getEmail());
         newStudent.setMob(student.getMob());
@@ -57,6 +58,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student addStudent(Student student) {
         Student newStudent = new Student();
+        newStudent.setSid(student.getSid());
         newStudent.setName(student.getName());
         newStudent.setEmail(student.getEmail());
         newStudent.setMob(student.getMob());
