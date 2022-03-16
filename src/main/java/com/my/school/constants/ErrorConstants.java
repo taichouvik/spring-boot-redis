@@ -1,6 +1,6 @@
-package com.my.school.utils.errors;
+package com.my.school.constants;
 
-public class Err {
+public class ErrorConstants {
 
     public static final String STUD_NOT_FOUND = "Student not found";
     public static final String STUD_NO_EMAILID = "Email ID was not entered";

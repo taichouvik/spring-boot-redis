@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-import com.my.school.utils.annotations.ValidMobile;
-import com.my.school.utils.errors.Err;
+import com.my.school.constants.ErrorConstants;
+import com.my.school.validations.ValidMobile;
 
 import lombok.Data;
 
@@ -23,19 +23,19 @@ public class Student {
     @Column(unique = true)
     private int sid;
 
-    @NotBlank(message = Err.STUD_NO_NAME )
+    @NotBlank(message = ErrorConstants.STUD_NO_NAME )
     @Size(max = 100)
     private String name;
 
     @Id
-    @NotBlank(message = Err.STUD_NO_EMAILID)
-    @Email(message = Err.STUD_BAD_EMAILID)
+    @NotBlank(message = ErrorConstants.STUD_NO_EMAILID)
+    @Email(message = ErrorConstants.STUD_BAD_EMAILID)
     private String email;
 
     @ValidMobile
     private String mob;
 
-    @NotNull(message = Err.STUD_NO_ADDR)
+    @NotNull(message = ErrorConstants.STUD_NO_ADDR)
     @Valid
     private Address address;
 }

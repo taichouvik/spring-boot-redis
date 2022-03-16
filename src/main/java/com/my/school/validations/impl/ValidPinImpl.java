@@ -1,16 +1,16 @@
-package com.my.school.utils.validations;
+package com.my.school.validations.impl;
 
 import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.my.school.utils.annotations.ValidPin;
+import com.my.school.validations.ValidPin;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PinValidator implements ConstraintValidator<ValidPin, String> {
+public class ValidPinImpl implements ConstraintValidator<ValidPin, String> {
 
     @Override
     public boolean isValid(String pin, ConstraintValidatorContext context) {

@@ -4,8 +4,8 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.my.school.utils.annotations.ValidPin;
-import com.my.school.utils.errors.Err;
+import com.my.school.constants.ErrorConstants;
+import com.my.school.validations.ValidPin;
 
 import lombok.Data;
 
@@ -13,21 +13,21 @@ import lombok.Data;
 @Data
 public class Address {
 
-    @NotBlank(message = Err.ADDR_NO_L1)
+    @NotBlank(message = ErrorConstants.ADDR_NO_L1)
     private String addrLine1;
 
     private String addrLine2;
 
-    @NotBlank(message = Err.ADDR_NO_CITY)
+    @NotBlank(message = ErrorConstants.ADDR_NO_CITY)
     private String city;
 
-    @NotNull(message = Err.ADDR_NO_PIN)
+    @NotNull(message = ErrorConstants.ADDR_NO_PIN)
     @ValidPin
     private String pin;
 
-    @NotBlank(message = Err.ADDR_NO_STATE)
+    @NotBlank(message = ErrorConstants.ADDR_NO_STATE)
     private String state;
 
-    @NotBlank(message = Err.ADDR_NO_COUNTRY)
+    @NotBlank(message = ErrorConstants.ADDR_NO_COUNTRY)
     private String country;
 }

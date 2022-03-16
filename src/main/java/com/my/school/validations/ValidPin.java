@@ -1,4 +1,4 @@
-package com.my.school.utils.annotations;
+package com.my.school.validations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -9,16 +9,16 @@ import java.lang.annotation.ElementType;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.my.school.utils.errors.Err;
-import com.my.school.utils.validations.PinValidator;
+import com.my.school.constants.ErrorConstants;
+import com.my.school.validations.impl.ValidPinImpl;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = PinValidator.class)
+@Constraint(validatedBy = ValidPinImpl.class)
 @Documented
 public @interface ValidPin {
 
-    String message() default Err.ADDR_BAD_PIN;
+    String message() default ErrorConstants.ADDR_BAD_PIN;
 
     Class<?>[] groups() default {};
 

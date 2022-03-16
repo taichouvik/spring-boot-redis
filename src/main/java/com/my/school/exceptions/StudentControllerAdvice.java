@@ -1,10 +1,9 @@
-package com.my.school.utils.controller_advices;
+package com.my.school.exceptions;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import com.my.school.entities.Response;
-import com.my.school.utils.exceptions.NotFoundException;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

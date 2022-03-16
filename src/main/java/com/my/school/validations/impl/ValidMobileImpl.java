@@ -1,16 +1,16 @@
-package com.my.school.utils.validations;
+package com.my.school.validations.impl;
 
 import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.my.school.utils.annotations.ValidMobile;
+import com.my.school.validations.ValidMobile;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MobileValidator implements ConstraintValidator<ValidMobile, String> {
+public class ValidMobileImpl implements ConstraintValidator<ValidMobile, String> {
 
     @Override
     public boolean isValid(String mob, ConstraintValidatorContext context) {
