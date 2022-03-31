@@ -8,6 +8,7 @@ import com.my.school.exceptions.NotFoundException;
 import com.my.school.repositories.StudentRepo;
 import com.my.school.services.StudentService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class StudentServiceImpl implements StudentService {
 
     private StudentRepo studentRepo;
 
+    @Autowired
+    ModelMapper modelMapper;
+    
     @Autowired
     public StudentServiceImpl(StudentRepo studentRepo) {
         this.studentRepo = studentRepo;
@@ -38,11 +42,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student updateStudent(Student student) {
         Student newStudent = getStudentById(student.getSid());
-        newStudent.setSid(student.getSid());
-        newStudent.setName(student.getName());
-        newStudent.setEmail(student.getEmail());
-        newStudent.setMob(student.getMob());
-        newStudent.setAddress(student.getAddress());
+        modelMapper.map(student, newStudent);
         return newStudent;
     }
 
@@ -58,11 +58,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student addStudent(Student student) {
         Student newStudent = new Student();
-        newStudent.setSid(student.getSid());
-        newStudent.setName(student.getName());
-        newStudent.setEmail(student.getEmail());
-        newStudent.setMob(student.getMob());
-        newStudent.setAddress(student.getAddress());
+       
         return studentRepo.save(newStudent);
     }
 

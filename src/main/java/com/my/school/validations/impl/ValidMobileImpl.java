@@ -15,9 +15,9 @@ public class ValidMobileImpl implements ConstraintValidator<ValidMobile, String>
     @Override
     public boolean isValid(String mob, ConstraintValidatorContext context) {
         String mobRegex = "^\\d{10}$";
-
         if (mob == null) {
-            log.error("mob is null");
+        	log.error("f");
+			log.error("mob is null");
             return false;
         } else if ((Pattern.compile(mobRegex).matcher(mob).matches())) {
             return true;

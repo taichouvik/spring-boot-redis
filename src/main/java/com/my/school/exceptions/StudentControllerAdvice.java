@@ -1,8 +1,5 @@
 package com.my.school.exceptions;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import com.my.school.entities.Response;
 
 import org.springframework.http.HttpHeaders;
@@ -20,7 +17,7 @@ public class StudentControllerAdvice {
     public ResponseEntity<Response> recordNotFoundHandler(NotFoundException exception) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        Response response = new Response(Arrays.asList(exception.getMessage()));
+        Response response = new Response();
         ResponseEntity<Response> responseEntity = new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
         return responseEntity;
     }
@@ -29,9 +26,7 @@ public class StudentControllerAdvice {
     public ResponseEntity<Response> recordNotFoundHandler(MethodArgumentNotValidException exception) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        Response response = new Response(exception.getFieldErrors().stream()
-                .map(err -> String.format("'%s' - %s", err.getRejectedValue(), err.getDefaultMessage()))
-                .collect(Collectors.toList()));
+        Response response = new Response();
         ResponseEntity<Response> responseEntity = new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
         return responseEntity;
     }
