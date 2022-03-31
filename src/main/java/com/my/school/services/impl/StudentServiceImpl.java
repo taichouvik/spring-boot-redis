@@ -2,9 +2,7 @@ package com.my.school.services.impl;
 
 import java.util.List;
 
-import com.my.school.constants.ErrorConstants;
 import com.my.school.entities.Student;
-import com.my.school.exceptions.NotFoundException;
 import com.my.school.repositories.StudentRepo;
 import com.my.school.services.StudentService;
 
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl implements StudentService {
 
+    @Autowired
     private StudentRepo studentRepo;
 
     @Autowired
@@ -27,9 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getStudentById(int id) {
-        Student student = studentRepo.findBySid(id)
-                .orElseThrow(() -> new NotFoundException(String.valueOf(id), ErrorConstants.STUD_NOT_FOUND));
-        return student;
+        return studentRepo.findBySid(id).orElse(new Student());
     }
 
     @Override
@@ -49,9 +46,6 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getStudents() {
         List<Student> studentList = studentRepo.findAll();
-        if (studentList.isEmpty())
-            throw new NotFoundException(ErrorConstants.STUD_NOT_FOUND);
-        else
             return studentList;
     }
 
