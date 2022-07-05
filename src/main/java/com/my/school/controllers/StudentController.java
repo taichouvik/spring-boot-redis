@@ -3,7 +3,6 @@ package com.my.school.controllers;
 import com.my.school.entities.Student;
 import com.my.school.services.StudentService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +22,6 @@ public class StudentController {
 
     private StudentService studentService;
 
-    @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -32,7 +30,7 @@ public class StudentController {
     public ResponseEntity<List<Student>> getStudents() {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(studentService.getStudents());
     }
-
+    
     @GetMapping(path = "/student/{id}")
     public ResponseEntity<Student> getStudent(@PathVariable Integer id) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(studentService.getStudentById(id));
